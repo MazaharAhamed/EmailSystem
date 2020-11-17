@@ -104,10 +104,10 @@ namespace AmazonSESSample
                 Method = HttpMethod.Get,
                 RequestUri = new Uri("https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=78.491684&lat=17.38714"),
                 Headers =
-    {
-        { "x-rapidapi-key", "5f8992a83fmsh231b95ee1aefef9p15ec40jsnc330fcab026b" },
-        { "x-rapidapi-host", "weatherbit-v1-mashape.p.rapidapi.com" },
-    },
+            {
+                { "x-rapidapi-key", "5f8992a83fmsh231b95ee1aefef9p15ec40jsnc330fcab026b" },
+                { "x-rapidapi-host", "weatherbit-v1-mashape.p.rapidapi.com" },
+            },
             };
             using (var response = await client.SendAsync(request))
             {
