@@ -18,8 +18,8 @@ namespace AmazonSESSample
 
         static readonly string receiverAddress = "testemailinn1@gmail.com";
 
-        static readonly string awsAccessKey = "AKIAICAJEC63GOMQIJBQ";
-        static readonly string awsSecretKey = "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";
+        static readonly string awsAccessKey = "AKIAJE6AL6JVFEYZED5A";
+        static readonly string awsSecretKey = "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";
 
 
         static readonly string textBody = "Amazon SES Test (.NET)\r\n"
@@ -45,13 +45,13 @@ namespace AmazonSESSample
                 var watch = new System.Diagnostics.Stopwatch();
 
                 watch.Start();
+                int counter = 0;
 
-                int sent = 2;
+                int sent = 10;
                 Parallel.For(0, sent, new ParallelOptions { MaxDegreeOfParallelism = 4 }, count =>
                 {
-
-                    var subject = $"Amazon test {sent}";
-
+                    int progress = Interlocked.Increment(ref counter);
+                    var subject = "my subject " + counter.ToString();
                     SendEmailRequest sentEmailRequest = SendEmail(subject).Result;
                     Console.WriteLine("Sending email using Amazon SES...");
                     var response = client.SendEmailAsync(sentEmailRequest);
@@ -82,11 +82,6 @@ namespace AmazonSESSample
                     Subject = new Content(subject),
                     Body = new Body
                     {
-                        Html = new Content
-                        {
-                            Charset = "UTF-8",
-                            Data = htmlBody
-                        },
                         Text = new Content
                         {
                             Charset = "UTF-8",
@@ -107,7 +102,7 @@ namespace AmazonSESSample
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=17.385&lat=78.4867"),
+                RequestUri = new Uri("https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=78.491684&lat=17.38714"),
                 Headers =
     {
         { "x-rapidapi-key", "5f8992a83fmsh231b95ee1aefef9p15ec40jsnc330fcab026b" },
