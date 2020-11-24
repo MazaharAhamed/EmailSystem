@@ -18,8 +18,8 @@ namespace AmazonSESSample
 
         static readonly string receiverAddress = "testemailinn1@gmail.com";
 
-        static readonly string awsAccessKey = "AKIAJE6AL6JVFEYZED5A";
-        static readonly string awsSecretKey = "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";
+        static readonly string awsAccessKey = "";
+        static readonly string awsSecretKey = "";
 
 
         static readonly string textBody = "Amazon SES Test (.NET)\r\n"
@@ -28,16 +28,15 @@ namespace AmazonSESSample
 
 
         static readonly string htmlBody = @"<html>
-<head></head>
-<body>
-  <h1>Amazon SES Test (AWS SDK for .NET)</h1>
-  <p>This email was sent with
-    <a href='https://aws.amazon.com/ses/'>Amazon SES</a> using the
-    <a href='https://aws.amazon.com/sdk-for-net/'>
-      AWS SDK for .NET</a>.</p>
-</body>
-</html>";
-
+                                        <head></head>
+                                        <body>
+                                          <h1>Amazon SES Test (AWS SDK for .NET)</h1>
+                                          <p>This email was sent with
+                                            <a href='https://aws.amazon.com/ses/'>Amazon SES</a> using the
+                                            <a href='https://aws.amazon.com/sdk-for-net/'>
+                                              AWS SDK for .NET</a>.</p>
+                                        </body>
+                                        </html>";
         static async Task Main(string[] args)
         {
             using (var client = new AmazonSimpleEmailServiceClient(awsAccessKey, awsSecretKey, RegionEndpoint.USWest2))
